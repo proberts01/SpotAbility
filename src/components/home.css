@@ -1,0 +1,81 @@
+body, html {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-image: url('/src/img/map-placeholder.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    overflow: hidden;
+}
+
+.smallLogo{
+    width: 160px;
+    height: 160px;
+    margin: 10px;
+}
+
+.whereTo {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color:aliceblue;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: center;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.autocomplete-container {
+    position: relative;
+    width: 100%;
+}
+
+.autocomplete-input {
+  width: 100%;
+  padding: 10px 15px;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  display: block;
+}
+
+.autocomplete-results {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 0;
+  margin: 8px 0 0;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  list-style: none;
+}
+
+.autocomplete-results li {
+  padding: 10px 15px;
+  cursor: pointer;
+  line-height: 24px;
+}
+
+.autocomplete-results li:hover,
+.autocomplete-results li:focus {
+  background-color: #f4f4f4;
+}
+
+.autocomplete-results strong {
+  color: #333;
+}
+
+.autocomplete-results small {
+  color: #666;
+  margin-left: 10px;
+}
