@@ -1,9 +1,13 @@
 {
   "name": "spotability",
   "version": "1.0.0",
+  "homepage": "https://proberts01.github.io/SpotAbility",
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
   "main": "index.js",
   "scripts": {
+    "build": "react-scripts build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -12,6 +16,7 @@
   "license": "ISC",
   "dependencies": {
     "@react-google-maps/api": "^2.19.3",
+    "build": "^0.1.4",
     "fs-extra": "^11.2.0",
     "path-browserify": "^1.0.1",
     "react-cool-onclickoutside": "^1.7.0",
@@ -32,5 +37,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^6.1.1"
   }
 }
