@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-
 import usePlacesAutocomplete, { getGeocode, getLatLng } from "use-places-autocomplete";
 import useOnclickOutside from "react-cool-onclickoutside";
 import './home.css';
@@ -62,17 +61,40 @@ const PlacesAutoComplete = ({ onPlaceSelected }) => {
 };
 
 function Home() {
+  const [scriptLoaded, setScriptLoaded] = useState(false); // Initialize scriptLoaded state
   const [selectedPlace, setSelectedPlace] = useState(null);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = `https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}&libraries=places`;
+    script.async = true;
+    script.defer = true;
+    document.head.appendChild(script);
+    script.onload = () => {
+      console.log("Google Maps script loaded successfully.");
+      setScriptLoaded(true); // Sets scriptLoaded to true once the script is loaded
+    };
+    script.onerror = () => {
+      console.error("Error loading Google Maps.");
+      setScriptLoaded(false); // It's good practice to handle error states as well
+    };
+  }, []); // The empty array ensures this effect runs only once
+
   const handlePlaceSelected = (place) => {
     navigate('/destination', { state: { place: place } });
   };
+
   return (
     <div className="media">
       <div className="whereTo">
-        <img src={bluePathLogo} alt="My Image" className="smallLogo"/>
+        <img src={bluePathLogo} alt="Blue Path Logo" className="smallLogo"/>
         <h1>Where To?</h1>
-        <PlacesAutoComplete onPlaceSelected={handlePlaceSelected} />
+        {scriptLoaded ? (
+          <PlacesAutoComplete onPlaceSelected={handlePlaceSelected} />
+        ) : (
+          <div>Loading...</div> // Display a loading message or spinner here
+        )}
       </div>
     </div>
   );
