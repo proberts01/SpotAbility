@@ -61,7 +61,7 @@ const PlacesAutoComplete = ({ onPlaceSelected }) => {
 };
 
 function Home() {
-  const [scriptLoaded, setScriptLoaded] = useState(false); // Initialize scriptLoaded state
+  const [scriptLoaded, setScriptLoaded] = useState(false);
   const [selectedPlace, setSelectedPlace] = useState(null);
   const navigate = useNavigate();
 
@@ -73,13 +73,13 @@ function Home() {
     document.head.appendChild(script);
     script.onload = () => {
       console.log("Google Maps script loaded successfully.");
-      setScriptLoaded(true); // Sets scriptLoaded to true once the script is loaded
+      setScriptLoaded(true);
     };
     script.onerror = () => {
       console.error("Error loading Google Maps.");
-      setScriptLoaded(false); // It's good practice to handle error states as well
+      setScriptLoaded(false);
     };
-  }, []); // The empty array ensures this effect runs only once
+  }, []);
 
   const handlePlaceSelected = (place) => {
     navigate('/destination', { state: { place: place } });
@@ -93,7 +93,7 @@ function Home() {
         {scriptLoaded ? (
           <PlacesAutoComplete onPlaceSelected={handlePlaceSelected} />
         ) : (
-          <div>Loading...</div> // Display a loading message or spinner here
+          <div>Loading...</div>
         )}
       </div>
     </div>
