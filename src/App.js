@@ -6,7 +6,7 @@ function App() {
   return (
     <Router>
         <Routes>
-          <Route path='/' element={<Home />} /> {/* Route for the Home component */}
+          <Route path='/SpotAbility' element={<Home />} /> {/* Route for the Home component */}
         </Routes>
     </Router>
   );
